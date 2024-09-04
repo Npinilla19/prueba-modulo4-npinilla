@@ -25,6 +25,9 @@ def mostrar_formato(value, subtipo):
     print (f"Formato: {value}, subtipo: {subtipo}")
 
 class Video(Anuncio):
+    FORMATO = "Video"
+    SUB_TIPOS = ("instream", "outstream")
+    
     def __init__(self,duracion):
        super().__init__(ancho=1, alto=1)
         self.duracion = duracion if duracion > 0 else 5
@@ -36,10 +39,18 @@ class Video(Anuncio):
         print("RECORTE DE VIDEO NO IMPLEMENTADO AÚN")
 
 class Display(Anuncio):
-
+    FORMATO = "Display"
+    SUB_TIPOS = ("tradicional", "native")
+    
     def comprimir_anuncio(self):
         print("COMPRESIÓN DE ANUNCIOS DISPLAY NO IMPLEMENTADA AÚN")
 
     def redimensionar_anuncio(self):
         print("REDIMENSIONAMIENTO DE ANUNCIOS DISPLAY NO IMPLEMENTADO AÚN")
     
+class Social(Anuncio):
+    FORMATO = "Social"
+    SUB_TIPOS = ("facebook", "linkedin")
+
+    def comprimir_anuncio(self):
+        print("COMPRESIÓN DE ANUNCIOS DE REDES SOCIALES NO IMPLEMENTADA AÚN")
