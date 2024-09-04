@@ -26,5 +26,7 @@ def mostrar_formato(value, subtipo):
 
 class Video(Anuncio):
     def __init__(self,duracion):
-        pass
+       super().__init__(ancho=1, alto=1)
+        self.duracion = duracion if duracion > 0 else 5
+
 
