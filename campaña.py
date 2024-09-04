@@ -1,4 +1,5 @@
 from error import LargoExcedidoException
+from anuncio import Video, Display, Social
 
 
 class Campaña:
@@ -6,10 +7,27 @@ class Campaña:
         self.nombre = nombre
         self.fecha_inicio = fecha_inicio
         self.fecha_termino = fecha_termino
-        self._anuncios = {"Video": 0, "Display": 0, "Social": 0}
+        self._anuncios = self._crear_anuncios(anuncios_data)
 
     def _crear_anuncios(self, anuncios_data):
-        pass
+        anuncios = []
+        for anuncio_data in anuncios_data:
+            anuncio = self._crear_anuncio(
+                anuncio_data
+            )  # Método que crea el anuncio según el tipo
+            anuncios.append(anuncio)
+        return anuncios
+
+    def _crear_anuncio(self, anuncio_data):
+        formato = anuncio_data.get("formato")
+        if formato == "Video":
+            return Video(**anuncio_data)
+        elif formato == "Display":
+            return Display(**anuncio_data)
+        elif formato == "Social":
+            return Social(**anuncio_data)
+        else:
+            raise ValueError("Formato de anuncio no reconocido")
 
     @property
     def nombre(self):
