@@ -29,4 +29,8 @@ class Video(Anuncio):
        super().__init__(ancho=1, alto=1)
         self.duracion = duracion if duracion > 0 else 5
 
-
+    def comprimir_anuncio(self):
+        print("COMPRESIÓN DE VIDEO NO IMPLEMENTADA AÚN")
+    
+    def redimensionar_anuncio(self):
+        print("RECORTE DE VIDEO NO IMPLEMENTADO AÚN")
