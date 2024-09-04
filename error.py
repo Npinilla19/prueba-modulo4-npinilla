@@ -1,2 +1,4 @@
-def SubTipoInvalidoException(Exception):
+class SubTipoInvalidoException(Exception):
+    pass
+class LargoExcedidoError(Exception):
     pass
