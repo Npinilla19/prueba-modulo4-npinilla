@@ -34,3 +34,12 @@ class Video(Anuncio):
     
     def redimensionar_anuncio(self):
         print("RECORTE DE VIDEO NO IMPLEMENTADO AÚN")
+
+class Display(Anuncio):
+
+    def comprimir_anuncio(self):
+        print("COMPRESIÓN DE ANUNCIOS DISPLAY NO IMPLEMENTADA AÚN")
+
+    def redimensionar_anuncio(self):
+        print("REDIMENSIONAMIENTO DE ANUNCIOS DISPLAY NO IMPLEMENTADO AÚN")
+    
