@@ -1,0 +1,2 @@
+def SubTipoInvalidoException(Exception):
+    pass
