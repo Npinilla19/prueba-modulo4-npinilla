@@ -54,3 +54,6 @@ class Social(Anuncio):
 
     def comprimir_anuncio(self):
         print("COMPRESIÓN DE ANUNCIOS DE REDES SOCIALES NO IMPLEMENTADA AÚN")
+
+    def redimensionar_anuncio(self):
+        print("REDIMENSIONAMIENTO DE ANUNCIOS DE REDES SOCIALES NO IMPLEMENTADA AÚN")
