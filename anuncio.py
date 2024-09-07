@@ -6,9 +6,31 @@ class Anuncio:
     def __init__(self, ancho, alto, sub_tipo, url_archivo, url_clic):
         self.ancho = ancho if ancho > 0 else 1
         self.alto = alto if ancho > 0 else 1
-        self.sub_tipo = sub_tipo
         self.url_archivo = url_archivo
         self.url_clic = url_clic
+        self.sub_tipo = sub_tipo
+
+
+# Getters y Setters
+@property
+def url_archivo(self):
+    pass
+
+
+@url_archivo.setter
+def url_archivo(self):
+    pass
+
+
+# Getters y Setters
+@property
+def url_clic(self):
+    pass
+
+
+@url_clic.setter
+def url_clic(self):
+    pass
 
 
 # Getters y Setters
@@ -19,7 +41,7 @@ def sub_tipo(self):
 
 @sub_tipo.setter
 def sub_tipo(self, value):
-    if value not in self.sub_tipo:
+    if value not in self.SUB_TIPOS:
         raise SubTipoInvalidoException(f"Subtipo {value} no permitido ")
     self.sub_tipo = value
 
