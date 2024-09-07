@@ -18,6 +18,7 @@ class Campaña:
             anuncios.append(anuncio)
         return anuncios
 
+    # por que no sale en el diagrama estos metodos debemos preguntar???pero la guía lo indica.
     def _crear_anuncio(self, anuncio_data):
         formato = anuncio_data.get("formato")
         if formato == "Video":
@@ -46,4 +47,7 @@ class Campaña:
         return self._anuncios
 
     def __str__(self):
-        pass
+        tipos = {"Video": 0, "Display": 0, "Social": 0}
+        for anuncio in self.anuncios:
+            tipos[type(anuncio).__name__] += 1
+        return f" Nombre de la campaña: {self.nombre} \n Anuncios: {tipos['Video']} Video, {tipos['Display']} Display, {tipos['Social']} Social"
