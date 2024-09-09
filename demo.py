@@ -4,7 +4,16 @@ from error import LargoExcedidoException, SubTipoInvalidoException
 
 
 def main():
+    """
+    Función principal para ejecutar el script.
 
+    Crea un anuncio de video y una campaña publicitaria, añade el anuncio a la campaña,
+    y permite al usuario actualizar el nombre de la campaña y el subtipo del anuncio.
+
+    Raises:
+        SubTipoInvalidoException: Si el subtipo del anuncio no es válido.
+        LargoExcedidoException: Si el nombre de la campaña supera los 250 caracteres.
+    """
     video = Video(
         sub_tipo="instream",
         url_archivo="http://example.com/video.mp4",
