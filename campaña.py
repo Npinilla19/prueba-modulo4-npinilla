@@ -22,25 +22,21 @@ class Campaña:
         self._nombre = nombre
         self.fecha_inicio = fecha_inicio
         self.fecha_termino = fecha_termino
-        self._anuncios = self._crear_anuncios(anuncios_data)
+        self._anuncios = {
+            "Video": [],
+            "Display": [],
+            "Social": [],
+        }
 
-    def _crear_anuncios(self, anuncios_data):
-        anuncios = []
-        for anuncio_data in anuncios_data:
-            anuncio = self._crear_anuncio(anuncio_data)
-            anuncios.append(anuncio)
-        return anuncios
-
-    def _crear_anuncio(self, anuncio_data):
-        formato = anuncio_data.pop("formato")
-        if formato == "Video":
-            return Video(**anuncio_data)
-        elif formato == "Display":
-            return Display(**anuncio_data)
-        elif formato == "Social":
-            return Social(**anuncio_data)
+    def crear_anuncio(self, anuncio):
+        if isinstance(anuncio, Video):
+            self.anuncios["Video"].append(anuncio)
+        elif isinstance(anuncio, Display):
+            self.anuncios["Display"].append(anuncio)
+        elif isinstance(anuncio, Social):
+            self.anuncios["Social"].append(anuncio)
         else:
-            raise ValueError("Formato de anuncio no reconocido")
+            raise ValueError("Tipo de anuncio no válido.")
 
     @property
     def nombre(self):
@@ -59,7 +55,7 @@ class Campaña:
         return self._anuncios
 
     def __str__(self):
-        tipos = {"Video": 0, "Display": 0, "Social": 0}
-        for anuncio in self.anuncios:
-            tipos[type(anuncio).__name__] += 1
-        return f"Nombre de la campaña: {self.nombre}\nAnuncios: {tipos['Video']} Video, {tipos['Display']} Display, {tipos['Social']} Social"
+        video_count = len(self.anuncios["Video"])
+        display_count = len(self.anuncios["Display"])
+        social_count = len(self.anuncios["Social"])
+        return f"Nombre de la campaña: {self.nombre}\nAnuncios: {video_count} Video, {display_count} Display, {social_count} Social"

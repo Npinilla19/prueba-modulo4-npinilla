@@ -1,38 +1,43 @@
 from campaña import Campaña
+from anuncio import Video
 from error import LargoExcedidoException, SubTipoInvalidoException
 
 
 def main():
-    anuncios_data = [
-        {
-            "formato": "Video",
-            "sub_tipo": "instream",
-            "url_archivo": "http://example.com/video.mp4",
-            "url_clic": "http://example.com",
-            "duracion": 30,
-        }
-    ]
+
+    video = Video(
+        sub_tipo="instream",
+        url_archivo="http://example.com/video.mp4",
+        url_clic="http://example.com",
+        duracion=30,
+    )
     campaña = Campaña(
         nombre="Campaña Inicial",
         fecha_inicio="2024-09-01",
         fecha_termino="2024-09-30",
-        anuncios_data=anuncios_data,
+        anuncios_data=[video],
     )
+    # Metodo crear anuncio
+    campaña.crear_anuncio(video)
+    print(campaña)
 
-    nuevo_nombre = input("Ingrese un nuevo nombre para la campaña: ")
-    nuevo_sub_tipo = input(
-        "Ingrese un nuevo sub_tipo para el anuncio (instream/outstream): "
-    )
+    print(f"El nombre actual es: {campaña.nombre}")
+    print(f"El subtipo actual es: {video.sub_tipo}")
 
     try:
+        nuevo_nombre = input("Ingrese el nuevo nombre de la campaña: ")
         campaña.nombre = nuevo_nombre
-        campaña.anuncios[0].sub_tipo = nuevo_sub_tipo
-    except (LargoExcedidoException, SubTipoInvalidoException) as e:
-        with open("error.log", "a") as error_file:
-            error_file.write(f"{str(e)}\n")
-        print(f"Error: {str(e)}")
 
-    print(campaña)
+        nuevo_subtipo = input("Ingrese el nuevo subtipo de anuncio: ")
+        video.sub_tipo = nuevo_subtipo
+
+        print(
+            f"el nuevo nombre es: {campaña.nombre}, el nuevo subtipo es: {video.sub_tipo}"
+        )
+    except (SubTipoInvalidoException, LargoExcedidoException) as e:
+        with open("error.log", "a") as error_log:
+            error_log.write(str(e) + "\n")
+            print("Error:", e)
 
 
 if __name__ == "__main__":
